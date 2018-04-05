@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -8,6 +10,7 @@ const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders')
 
 mongoose.connect('mongodb://admin:admin@ds133659.mlab.com:33659/node-rest-shop');
+mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
