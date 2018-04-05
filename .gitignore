@@ -28,13 +28,14 @@ bower_components
 
 # node-waf configuration
 .lock-wscript
-
+.DS_Store
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
 
 # Dependency directories
 node_modules/
 jspm_packages/
+uploads
 
 # Typescript v1 declaration files
 typings/
