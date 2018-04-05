@@ -13,6 +13,7 @@ mongoose.connect('mongodb://admin:admin@ds133659.mlab.com:33659/node-rest-shop')
 mongoose.Promise = global.Promise;
 
 app.use(morgan('dev'));
+app.use('/uploads',express.static('uploads'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
