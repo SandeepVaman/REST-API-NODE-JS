@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const User = require('./../models/user')
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 router.post('/signup', (req, res, next)=>{
     User.find({email: req.body.email})
@@ -59,8 +60,18 @@ router.post('/login', (req, res, next) => {
                 });
             }
             if(result){
+                const token = jwt.sign({
+                    email:user[0].email,
+                    userId: user[0]._id
+                },
+                 'secret',
+                {
+                    expiresIn: "1h"
+                }
+              )
                 return res.status(200).json({
-                    message:'Auth successfull'
+                    message:'Auth successfull',
+                    token: token
                 });
             }
             res.status(401).json({
