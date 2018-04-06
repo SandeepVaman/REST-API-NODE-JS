@@ -7,7 +7,8 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 const productRoutes = require('./api/routes/products');
-const orderRoutes = require('./api/routes/orders')
+const orderRoutes = require('./api/routes/orders');
+const userRoutes = require('./api/routes/user');
 
 mongoose.connect('mongodb://admin:admin@ds133659.mlab.com:33659/node-rest-shop');
 mongoose.Promise = global.Promise;
@@ -31,6 +32,7 @@ next();
 //Rputes which should handle the requests
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
+app.use('/user', userRoutes);
 
 app.use((req, res, next) =>{
     const error = new Error('Not found');
